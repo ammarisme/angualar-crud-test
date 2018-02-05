@@ -8,9 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 // Components
 import {AppComponent} from './app.component';
 import {UsersComponent} from './users/users.component';
-import {UserDetailComponent} from './users/user-modal/user-modal.component';
-import {UserAddComponent} from './users/user-add/user-add.component';
-import {UserUpdateComponent} from './user-update/user-update.component';
+import {UserModalComponent} from './users/user-modal/user-modal.component';
 
 // Services
 import {UserService} from './user.service';
@@ -18,10 +16,8 @@ import {UserService} from './user.service';
 @NgModule({
   declarations: [
     AppComponent,
-    UserDetailComponent,
     UsersComponent,
-    UserAddComponent,
-    UserUpdateComponent
+    UserModalComponent
   ],
   imports: [
     BrowserModule,

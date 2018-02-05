@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ['../../app.component.css']
 })
 
-export class UserDetailComponent implements OnInit{
+export class UserModalComponent implements OnInit{
   @Input() user : User;
   @Input() action : string; // 'c','u','v'
   @Output() hideModal : EventEmitter<string> = new EventEmitter<string>();
