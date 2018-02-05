@@ -1,5 +1,5 @@
-<div class="modal-backdrop fade in" [style.display]="showModal ? 'block' : 'none'"></div>
-<div class="modal" tabindex="-1" *ngIf="showModal" role="dialog" style="display: block" [style.display]="showModal ? 'block' : 'none'">
+<div class="modal-backdrop fade in" ></div>
+<div class="modal" tabindex="-1" role="dialog" style="display: block">
         <div class="modal-dialog">
       
           <!-- Modal content-->
@@ -14,23 +14,29 @@
       <form name="UpdateUserForm">
         <div class="form-group">
           <label>First Name</label>
-          <input  [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" [disabled]="!edit">
+          <input  [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" [disabled]="action=='v' || action=='d'">
         </div>
         <div class="form-group">
           <label>Last Name</label>
-          <input  [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" [disabled]="!edit">
+          <input  [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" [disabled]="action=='v'  || action=='d'">
         </div>
         <div class="form-group">
           <label for="emailAddress">Email Address</label>
-          <input  id="emailAddress" [(ngModel)]="user.email" name="email" type="text" class="form-control" [disabled]="!edit">
+          <input  id="emailAddress" [(ngModel)]="user.email" name="email" type="text" class="form-control" [disabled]="action=='v'  || action=='d'">
         </div>
         <div class="form-group">
           <label for="mobileNumber">Mobile Number</label>
-          <input  id="mobileNumber" [(ngModel)]="user.mobileNumber" name="mobile" type="text" class="form-control" [disabled]="!edit">
+          <input  id="mobileNumber" [(ngModel)]="user.mobileNumber" name="mobile" type="text" class="form-control" [disabled]="action=='v'  || action=='d'">
         </div>
-        <div>
-            <button class="btn btn-warning" [disabled]="!edit">Update</button>
+        <div *ngIf="action=='u'">
+            <button class="btn btn-warning" type="button" (click)="updateUser()" >Update</button>
           </div>
+        <div *ngIf="action=='c'">
+              <button class="btn btn-warning " type="button" (click) = "addUser()" >Add</button>
+        </div>
+        <div *ngIf="action=='d'">
+                <button class="btn btn-danger" type="button" (click) = "deleteUser()" >Delete</button>
+        </div>
       </form>
             </div>
             <div class="modal-footer">

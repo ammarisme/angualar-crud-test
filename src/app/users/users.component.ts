@@ -15,10 +15,9 @@ export class UsersComponent implements OnInit {
   users: User[];
   user : User;
   showModal : boolean  = false;
-  edit : boolean = false;
   userUpdateForm: FormGroup;
   formBuilder: FormBuilder;
-  
+  action : string;
   constructor(private router: Router,
               private userService: UserService) {
   }
@@ -41,30 +40,47 @@ export class UsersComponent implements OnInit {
   update(thisUser : User): void {
     // this.router.navigate(['/update', id]);
     this.user = thisUser;
+    this.action = 'u';
     this.showModal = true;
-    this.edit = true;
-  }
-
-  remove(id: string): void {
-    this.userService.remove(id)
-      .then(() => {
-        this.getUsers();
-      });
-  }
-
+    }
+  
   onUserAddition(addedUser :User ){
     this.users.push(addedUser);
-    console.log(this.users);
+  }
+
+  onUpdateUser(addedUser :User ){
+    this.users.filter(x => x._id == addedUser._id)[0]=addedUser;
+    // update service need to be called from here.
   }
 
   viewDetail(thisUser : User): void {
-    // this.router.navigate(['/detail', id]);
-   this.user = thisUser;
-   this.showModal = true;
-   this.edit = false;
+    this.user = thisUser;
+    this.action = 'v';
+    this.showModal = true;
   }
 
-  closeModal(){
+  
+  hideModal(ev){
     this.showModal = false;
+  }
+
+  addUser(){
+    this.action = 'c'
+    this.user = new User('','','');
+    this.showModal = true;
+  }
+
+  remove(deleteUser: User){
+    // this.userService.remove(id)
+    // .then(() => {
+    //   this.getUsers();
+    // });
+    this.action = 'd';
+    this.user =deleteUser;
+    this.showModal = true;
+  }
+
+  onDeleteUser(deleteUser : User){
+  this.users = this.users.filter(x => x != deleteUser);  
   }
 }

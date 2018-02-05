@@ -1,5 +1,5 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import {User} from '../../user';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Location} from '@angular/common';
@@ -15,6 +15,12 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class UserDetailComponent implements OnInit{
   @Input() user : User;
   @Input() action : string; // 'c','u','v'
+  @Output() hideModal : EventEmitter<string> = new EventEmitter<string>();
+  @Output() userCreated : EventEmitter<User> = new EventEmitter<User>();
+  @Output() userUpdated : EventEmitter<User> = new EventEmitter<User>();
+  @Output() userDelete : EventEmitter<User> = new EventEmitter<User>();
+  
+
   userUpdateForm: FormGroup;
   formBuilder: FormBuilder;
   constructor(
@@ -22,9 +28,8 @@ export class UserDetailComponent implements OnInit{
     private route: ActivatedRoute,
     private location: Location
   ){
-    console.log('user modal init');
   };
-
+  
 
   buildForm(): void {
     this.userUpdateForm = this.formBuilder.group({
@@ -35,12 +40,23 @@ export class UserDetailComponent implements OnInit{
     });
   }
   ngOnInit(): void{
-    this.route.params
-      .switchMap((params: Params) => this.userService.getUser(params['id']))
-      .subscribe(user => this.user = user);
+    // commented out because the service isn't available right now.
+    // this.route.params
+    //   .switchMap((params: Params) => this.userService.getUser(params['id']))
+    //   .subscribe(user => this.user = user);
   }
 
-  goBack(): void{
-    this.location.back();
+  closeModal(){
+    this.hideModal.emit('');
+  }
+  addUser(){
+    this.userCreated.emit(this.user);
+  }
+
+  updateUser(){
+    this.userCreated.emit(this.user);
+  }
+  deleteUser(){
+    this.userDelete.emit(this.user);
   }
 }

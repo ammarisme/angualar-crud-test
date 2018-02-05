@@ -1,6 +1,5 @@
-<user-modal *ngIf="showModal" (action)="'c'"  (user)="user" ></user-modal>
-<div class="row form-group">
-  <!-- <user-detail [user]="user" [hidden]="user==null"></user-detail>   -->
+<user-modal *ngIf="showModal" (userDelete)="onDeleteUser($event)" (userUpdated)="onUpdateUser($event)" (userCreated)="onUserAddition($event)" (hideModal)="hideModal($event)" [action]="action"  [user]="user" ></user-modal>
+<div class="row form-group"> 
 <div>
 <div class="table-responsive">
   <table class="table table-bordered">
@@ -9,7 +8,7 @@
       </th>
       <th rowspan="2" class="text-center" style="vertical-align: middle">Name
       </th>
-      <th rowspan="2" class="text-center" style="vertical-align: middle">Email
+      <th rowspan="2" class="tesxt-center" style="vertical-align: middle">Email
       </th>
       <th rowspan="2" class="text-center" style="vertical-align: middle">Mobile Number
       </th>
@@ -32,12 +31,12 @@
         <button type="button" class="btn btn-block btn-default btn-xs" (click)="update(user)"><i class="fa fa-edit" aria-hidden="true"></i></button>
       </td>
       <td class="text-center">
-        <button type="button" (click)="remove(user._id)" class="btn btn-danger btn-block btn-xs"><i class="fa fa-close" aria-hidden="true"></i></button>
+        <button type="button" (click)="remove(user)" class="btn btn-danger btn-block btn-xs"><i class="fa fa-close" aria-hidden="true"></i></button>
       </td>
     </tr>
   </table>
 </div>
-<div class="col-md-3 text-right">
-  <button class="btn btn-success" routerLink="/add">Add New User
-  </button>
+<div class="col-md-3 pull-right">
+    <button class="btn btn-default pull-right" (click)="addUser()">Create User
+    </button>
 </div>
