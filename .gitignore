@@ -2,9 +2,9 @@
 
 # compiled output
 /dist
-/dist-server
 /tmp
 /out-tsc
+/bower_components
 
 # dependencies
 /node_modules

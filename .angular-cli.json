@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "test-app"
+    "name": "hello-world"
   },
   "apps": [
     {
@@ -29,6 +29,9 @@
       }
     }
   ],
+
+
+
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -36,16 +39,13 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
-      "exclude": "**/node_modules/**"
+      "project": "src/tsconfig.app.json"
     },
     {
-      "project": "src/tsconfig.spec.json",
-      "exclude": "**/node_modules/**"
+      "project": "src/tsconfig.spec.json"
     },
     {
-      "project": "e2e/tsconfig.e2e.json",
-      "exclude": "**/node_modules/**"
+      "project": "e2e/tsconfig.e2e.json"
     }
   ],
   "test": {
