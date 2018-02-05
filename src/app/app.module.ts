@@ -9,7 +9,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {UsersComponent} from './users/users.component';
 import {UserDetailComponent} from './users/user-modal/user-modal.component';
-import {DashboardComponent} from './dashboard.component';
 import {UserAddComponent} from './users/user-add/user-add.component';
 import {UserUpdateComponent} from './user-update/user-update.component';
 
@@ -21,7 +20,6 @@ import {UserService} from './user.service';
     AppComponent,
     UserDetailComponent,
     UsersComponent,
-    DashboardComponent,
     UserAddComponent,
     UserUpdateComponent
   ],

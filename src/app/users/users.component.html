@@ -1,16 +1,7 @@
 <user-modal *ngIf="showModal" (action)="'c'"  (user)="user" ></user-modal>
 <div class="row form-group">
   <!-- <user-detail [user]="user" [hidden]="user==null"></user-detail>   -->
-  <div class="col-md-3 text-right">
-    <button class="btn btn-success" routerLink="/add">Add New User
-    </button>
-  </div>
-  <div class="row"> 
-    <div class="col-md-12">
-      <add-user (userAdded)="onUserAddition($event)"  ></add-user>
-    </div>
-  </div>
-</div>
+<div>
 <div class="table-responsive">
   <table class="table table-bordered">
     <tr class="default">
@@ -45,4 +36,8 @@
       </td>
     </tr>
   </table>
+</div>
+<div class="col-md-3 text-right">
+  <button class="btn btn-success" routerLink="/add">Add New User
+  </button>
 </div>
